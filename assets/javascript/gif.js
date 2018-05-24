@@ -76,6 +76,12 @@ $(document).ready(function() {
                 gifTile.appendTo(".gifs-container");
             }
 
+            window.scrollBy({
+                top: 200, 
+                left: 0, 
+                behavior: 'smooth',
+            });
+
         });
     }
 
@@ -114,7 +120,6 @@ $(document).ready(function() {
         offset = offset + imagesLoaded;
         displayGifs();
     });
-
 
     // populate the initial buttons on the page
     displayTeamButtons();
