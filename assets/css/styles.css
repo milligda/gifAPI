@@ -45,6 +45,7 @@ h1 {
     padding: 5px;
     border-radius: 5px;
     border: none;
+    font-size: 16px;
 }
 
 .search-button, .load-button, .top-button {
@@ -58,6 +59,10 @@ h1 {
     text-transform: uppercase;
     margin: 0px 5px;
     text-decoration: none;
+}
+
+.search-button {
+    margin: 10px 5px;
 }
 
 .gifs-container {
@@ -88,11 +93,40 @@ h1 {
     text-transform: uppercase;
 }
 
+.download-button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
 .bottom-controls {
     position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
     padding-bottom: 20px;
-
 }
+
+/* .featherlight-loading {
+    position: absolute;
+    left: 50%;
+    top: 300px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid blue;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  } */

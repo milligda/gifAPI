@@ -3,10 +3,10 @@ $(document).ready(function() {
     var apiKey = "2dMmU36VbyBnmg6m95JD1hqKqaAMppHE";
     var startQueryURL = "https://api.giphy.com/v1/gifs/search?q=";
     var offset = 0; // giphy uses offset to determine the page.  25 items per page so page 2 would have an offset of 25, page 3 - 50
+    var imagesLoaded = 24;
 
     var teams = ['miami heat', 'golden state warriors', 'cleveland cavaliers', 'boston celtics', 'los angeles lakers'];
-    var displayNumber = offset + 24;
-
+    var team;
 
     function displayTeamButtons() {
 
@@ -39,10 +39,6 @@ $(document).ready(function() {
 
     function displayGifs(event) {
 
-        var team = $(this).attr("data-team");
-
-        team = team.replace(/ /g, "+");
-
         var queryURL = startQueryURL + team + "&api_key=" + apiKey + "&offset=" + offset;
 
         console.log(queryURL);
@@ -54,7 +50,7 @@ $(document).ready(function() {
 
             var results = response.data;
 
-            for (var i = 0; i < displayNumber; i++) {
+            for (var i = 0; i < imagesLoaded; i++) {
                 
                 var gifTile = $("<div>");
                 gifTile.addClass("gif-tile");
@@ -62,11 +58,20 @@ $(document).ready(function() {
                 var rating = results[i].rating;
 
                 var p = $("<p>").text(rating);
+
+                // var download = $("<a download>");
+                // download.attr('href', results[i].images.original.mp4);
+
+                // var downloadIcon = $("<img class='download-button' src='assets/images/download-icon.svg'>");
+                // downloadIcon.appendTo(download);
                 
                 var gifImage = $("<img>");
-                gifImage.attr('src', results[i].images.fixed_width.url);
+                gifImage.attr('src', results[i].images.fixed_width_still.url);
+                gifImage.attr('data-featherlight', results[i].images.original.url);
+
 
                 gifImage.appendTo(gifTile);
+                // download.appendTo(gifTile);
                 p.appendTo(gifTile);
                 gifTile.appendTo(".gifs-container");
             }
@@ -78,7 +83,15 @@ $(document).ready(function() {
     $(document).on("click", ".search-button", addTeam);
 
     // when the user clicks a team button, pull in gifs from GIPHY using an API call
-    $(document).on("click", ".team-button", displayGifs);
+    $(document).on("click", ".team-button", function() {
+
+        $(".gifs-container").empty();
+
+        team = $(this).attr("data-team");
+        team = team.replace(/ /g, "+");
+
+        displayGifs(); 
+    });
 
     $(".bottom-controls").hide();
 
@@ -96,6 +109,16 @@ $(document).ready(function() {
         }, 500);
     });
 
+    // on the load more button, 
+    $(document).on("click", ".load-button", function() {
+        offset = offset + imagesLoaded;
+        displayGifs();
+    });
+
+
     // populate the initial buttons on the page
     displayTeamButtons();
+
+    
+
 });
