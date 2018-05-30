@@ -67,7 +67,7 @@ $(document).ready(function() {
                 
                 var gifImage = $("<img>");
                 gifImage.attr('src', results[i].images.fixed_width_still.url);
-                gifImage.attr('data-featherlight', results[i].images.original.url);
+                gifImage.attr('data-featherlight', results[i].images.downsized_medium.url);
 
 
                 gifImage.appendTo(gifTile);

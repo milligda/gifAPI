@@ -42,20 +42,21 @@ h1 {
 }
 
 .input-container input {
-    padding: 5px;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 25px;
     border: none;
     font-size: 16px;
+
 }
 
 .search-button, .load-button, .top-button {
     border: none;
     background-color: #ffffff;
     color: #C8102E;
-    border-radius: 5px;
+    border-radius: 25px;
     font-size: 16px;
     font-weight: bold;
-    padding: 5px;
+    padding: 5px 10px;
     text-transform: uppercase;
     margin: 0px 5px;
     text-decoration: none;
@@ -105,4 +106,8 @@ h1 {
     width: 100%;
     text-align: center;
     padding-bottom: 20px;
+}
+
+.featherlight .featherlight-content {
+    border-radius: 5px;
 }
